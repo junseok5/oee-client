@@ -2,7 +2,11 @@ import React from "react"
 import styled from "styled-components"
 import Header from "../Header"
 
-const StyledContainer = styled.div``
+const StyledContainer = styled.div`
+    main {
+        margin-top: 4em;
+    }
+`
 
 const PageLayout: React.FC = ({ children }) => {
     return (
