@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Colors from "../../Constants/Colors"
 import { FiSearch } from "react-icons/fi"
+import { Link } from "react-router-dom"
 
 const StyledContainer = styled.div`
     position: fixed;
@@ -78,7 +79,9 @@ const HeaderPresenter: React.FC = () => {
         <StyledContainer>
             <div className="logo">
                 <div className="logo-icon">
-                    <span>OEE</span>
+                    <Link to="/">
+                        <span>OEE</span>
+                    </Link>
                 </div>
             </div>
             <div className="search-box">
