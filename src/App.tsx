@@ -12,7 +12,6 @@ const ExplorePage = loadable(() => import("./Pages/ExplorePage"))
 const FavoriteVideoPage = loadable(() => import("./Pages/FavoriteVideoPage"))
 const VideoPage = loadable(() => import("./Pages/VideoPage"))
 const ProfilePage = loadable(() => import("./Pages/ProfilePage"))
-const LoginPage = loadable(() => import("./Pages/LoginPage"))
 const SearchPage = loadable(() => import("./Pages/SearchPage"))
 const TermsPage = loadable(() => import("./Pages/TermsPage"))
 const PrivacyPage = loadable(() => import("./Pages/PrivacyPage"))
@@ -23,7 +22,6 @@ const App: React.FC = () => {
         <ClientContext.Provider value={client}>
             <Switch>
                 <Route path="/" component={MainPage} exact />
-                <Route path="/login" component={LoginPage} />
                 <Route path="/explore" component={ExplorePage} />
                 <Route path="/search" component={SearchPage} />
                 <Route path="/policy/privacy" component={PrivacyPage} />

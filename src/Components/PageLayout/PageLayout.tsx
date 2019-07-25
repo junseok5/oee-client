@@ -5,6 +5,7 @@ import Header from "../Header"
 const StyledContainer = styled.div`
     main {
         margin-top: 4em;
+        height: calc(100vh - 4em);
     }
 `
 

@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import Colors from "../../Constants/Colors"
 import { FiSearch } from "react-icons/fi"
-import Button from "../Button/Button"
 
 const StyledContainer = styled.div`
     position: fixed;
@@ -19,9 +18,17 @@ const StyledContainer = styled.div`
         width: 240px;
         padding-left: 1em;
         box-sizing: border-box;
-        color: ${Colors.main};
-        font-size: 1.5em;
-        font-weight: bold;
+
+        .logo-icon {
+            color: ${Colors.main};
+            font-size: 1.5em;
+            font-weight: bold;
+
+            span {
+                cursor: pointer;
+                user-select: none;
+            }
+        }
     }
 
     .search-box {
@@ -52,19 +59,28 @@ const StyledContainer = styled.div`
 
     .login {
         padding-right: 2em;
-        color: ${Colors.main};
-        font-weight: bold;
-        font-size: 1.1em;
         display: flex;
         flex: 1;
         justify-content: flex-end;
+
+        .login-button {
+            color: ${Colors.main};
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            user-select: none;
+        }
     }
 `
 
 const HeaderPresenter: React.FC = () => {
     return (
         <StyledContainer>
-            <div className="logo">OEE</div>
+            <div className="logo">
+                <div className="logo-icon">
+                    <span>OEE</span>
+                </div>
+            </div>
             <div className="search-box">
                 <label>
                     <FiSearch fontSize="1.3rem" color={Colors.normalGray} />
@@ -73,7 +89,9 @@ const HeaderPresenter: React.FC = () => {
                     </div>
                 </label>
             </div>
-            <div className="login">Login</div>
+            <div className="login">
+                <div className="login-button">Login</div>
+            </div>
         </StyledContainer>
     )
 }

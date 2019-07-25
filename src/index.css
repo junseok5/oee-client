@@ -1,61 +1,68 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
 body {
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Noto Sans KR", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
 * {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
 }
 
 input {
-  border: none;
-  outline: none;
+    border: none;
+    outline: none;
 }
 
-input[type=text] {
-  all: unset;
+input[type="text"] {
+    all: unset;
 }
 
-input[type=password] {
-  all: unset;
+input[type="password"] {
+    all: unset;
 }
 
 ul {
-  all: unset;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+    all: unset;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 a {
-  all: unset;
-  text-decoration: none;
-  color: inherit;
+    all: unset;
+    text-decoration: none;
+    color: inherit;
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+    background: #f1f1f1;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #353535;
-  border-radius: 2px;
+    background: #353535;
+    border-radius: 2px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #212121;
+    background: #212121;
 }
