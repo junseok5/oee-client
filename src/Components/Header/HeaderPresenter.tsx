@@ -12,8 +12,13 @@ const StyledContainer = styled.div`
     width: 100%;
     height: 4em;
     box-shadow: 0 1px 2px ${Colors.activeBox};
+    background: white;
     display: flex;
     align-items: center;
+
+    @media screen and (max-width: 768px) {
+        height: 3em;
+    }
 
     .logo {
         width: 240px;
@@ -34,6 +39,10 @@ const StyledContainer = styled.div`
 
     .search-box {
         display: flex;
+
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
 
         label {
             width: 400px;
@@ -64,12 +73,20 @@ const StyledContainer = styled.div`
         flex: 1;
         justify-content: flex-end;
 
+        @media screen and (max-width: 768px) {
+            padding-right: 1em;
+        }
+
         .login-button {
             color: ${Colors.main};
             font-weight: bold;
             font-size: 1.1em;
             cursor: pointer;
             user-select: none;
+
+            @media screen and (max-width: 768px) {
+                font-size: 1em;
+            }
         }
     }
 `

@@ -5,6 +5,14 @@ const StyledContainer = styled.div`
     width: 280px;
     margin: 1em;
 
+    @media screen and (max-width: 900px) {
+        width: 230px;
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+
     .thumbnail {
         position: relative;
         width: 100%;
@@ -28,6 +36,10 @@ const StyledContainer = styled.div`
 
     .title {
         font-size: 1.1em;
+
+        @media screen and (max-width: 768px) {
+            font-size: 1.2em;
+        }
     }
 `
 

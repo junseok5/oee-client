@@ -11,6 +11,10 @@ const StyledContainer = styled.div`
     background: ${Colors.box};
     border-right: 1px solid ${Colors.border};
 
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+
     .title {
         padding-top: 0.2em;
         padding-bottom: 0.2em;
