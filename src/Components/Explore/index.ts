@@ -1,3 +1,3 @@
-import ExploreContainer from "./ExploreContainer"
+import Explore from "./ExploreContainer"
 
-export default ExploreContainer
+export default Explore

@@ -1,3 +1,3 @@
-import VideoCardListContainer from "./VideoCardListContainer"
+import VideoCardList from "./VideoCardListContainer"
 
-export default VideoCardListContainer
+export default VideoCardList

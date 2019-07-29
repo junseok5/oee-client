@@ -1,8 +1,8 @@
 import React, { useCallback } from "react"
-import HeaderPresenter from "./HeaderPresenter"
-import { useDispatch, useSelector, shallowEqual } from "react-redux"
+import LoginModalPresenter from "./LoginModalPresenter"
+import { useSelector, shallowEqual, useDispatch } from "react-redux"
 
-const HeaderContainer: React.FC = () => {
+const LoginModalContainer: React.FC = () => {
     const viewLoginModal = useSelector(
         (state: any) => state.modal.login,
         shallowEqual
@@ -13,7 +13,9 @@ const HeaderContainer: React.FC = () => {
         [dispatch, viewLoginModal]
     )
 
-    return <HeaderPresenter setLoginModal={setLoginModal} />
+    return viewLoginModal ? (
+        <LoginModalPresenter setLoginModal={setLoginModal} />
+    ) : null
 }
 
-export default HeaderContainer
+export default LoginModalContainer

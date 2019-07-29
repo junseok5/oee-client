@@ -91,7 +91,14 @@ const StyledContainer = styled.div`
     }
 `
 
-const HeaderPresenter: React.FC = () => {
+interface IProps {
+    setLoginModal: () => {
+        type: string
+        val: boolean
+    }
+}
+
+const HeaderPresenter: React.FC<IProps> = ({ setLoginModal }) => {
     return (
         <StyledContainer>
             <div className="logo">
@@ -110,7 +117,9 @@ const HeaderPresenter: React.FC = () => {
                 </label>
             </div>
             <div className="login">
-                <div className="login-button">Login</div>
+                <div className="login-button" onClick={setLoginModal}>
+                    Login
+                </div>
             </div>
         </StyledContainer>
     )

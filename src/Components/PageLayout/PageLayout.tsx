@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import Header from "../Header"
 import Tabs from "../Tabs"
+import Base from "../Base"
 
 const StyledContainer = styled.div`
     main {
@@ -13,7 +13,7 @@ const StyledContainer = styled.div`
 const PageLayout: React.FC = ({ children }) => {
     return (
         <StyledContainer>
-            <Header />
+            <Base />
             <main>{children}</main>
             <Tabs />
         </StyledContainer>
