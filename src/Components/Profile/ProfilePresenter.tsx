@@ -4,12 +4,14 @@ import Colors from "../../Constants/Colors";
 
 const StyledContainer = styled.div`
     height: calc(100vh - 4em);
+    padding-top: 4em;
     display: flex;
     justify-content: center;
-    align-items: center;
 
     .profile {
         .user-info {
+            padding-left: 1em;
+            padding-right: 1em;
             display: flex;
             align-items: center;
 
@@ -33,6 +35,7 @@ const StyledContainer = styled.div`
 
         .u-list {
             margin-top: 1em;
+            font-size: 1.1em;
 
             .list {
                 padding: 0.8em 0.2em;

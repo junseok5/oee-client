@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { FiHome, FiGrid, FiUser } from "react-icons/fi"
+import { Link } from "react-router-dom"
 
 const StyledContainer = styled.div`
     display: none;
@@ -22,6 +23,11 @@ const StyledContainer = styled.div`
         display: flex;
         flex: 1;
         justify-content: center;
+
+        a {
+            display: flex;
+            align-items: center;
+        }
     }
 `
 
@@ -29,13 +35,19 @@ const Tabs: React.FC = () => {
     return (
         <StyledContainer>
             <div className="tab">
-                <FiHome />
+                <Link to="/">
+                    <FiHome />
+                </Link>
             </div>
             <div className="tab">
-                <FiGrid />
+                <Link to="/explore">
+                    <FiGrid />
+                </Link>
             </div>
             <div className="tab">
-                <FiUser />
+                <Link to="/user/1">
+                    <FiUser />
+                </Link>
             </div>
         </StyledContainer>
     )
