@@ -1,7 +1,8 @@
 import React from "react"
+import Video from "../Components/Video"
 
 const VideoPage: React.FC = () => {
-    return <div>Video page</div>
+    return <Video />
 }
 
 export default VideoPage

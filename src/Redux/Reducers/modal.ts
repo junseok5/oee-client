@@ -2,7 +2,7 @@ import produce from "immer"
 import { SET_LOGIN_MODAL } from "../Actions/modalAction"
 
 const initialState = {
-    login: true
+    login: false
 }
 
 type IState = {

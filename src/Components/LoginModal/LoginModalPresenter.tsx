@@ -61,6 +61,7 @@ const StyledContainer = styled.div`
                     align-items: center;
                     justify-content: center;
                     user-select: none;
+                    cursor: pointer;
 
                     .icon {
                         margin-right: 0.3em;
