@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { FiHome, FiGrid, FiUser } from "react-icons/fi"
 import { Link } from "react-router-dom"
+import Colors from "../../Constants/Colors"
 
 const StyledContainer = styled.div`
     display: none;
@@ -11,6 +12,7 @@ const StyledContainer = styled.div`
     width: 100%;
     height: 2.2em;
     background: white;
+    color: ${Colors.normalGray};
     font-size: 1.5em;
 
     @media screen and (max-width: 768px) {
@@ -24,33 +26,37 @@ const StyledContainer = styled.div`
         flex: 1;
         justify-content: center;
 
-        a {
-            display: flex;
-            align-items: center;
+        &.selected {
+            color: black;
         }
     }
 `
 
-const Tabs: React.FC = () => {
+interface IProps {
+    selectedTab: string
+    onPressTab: (tabName: string) => void
+}
+
+const TabsPresenter: React.FC<IProps> = ({ selectedTab, onPressTab }) => {
     return (
         <StyledContainer>
-            <div className="tab">
-                <Link to="/">
+            <div className={`tab ${selectedTab === "Home" && "selected"}`}>
+                <span onClick={() => onPressTab("Home")}>
                     <FiHome />
-                </Link>
+                </span>
             </div>
-            <div className="tab">
-                <Link to="/explore">
+            <div className={`tab ${selectedTab === "Explore" && "selected"}`}>
+                <span onClick={() => onPressTab("Explore")}>
                     <FiGrid />
-                </Link>
+                </span>
             </div>
-            <div className="tab">
-                <Link to="/user/1">
+            <div className={`tab ${selectedTab === "Profile" && "selected"}`}>
+                <span onClick={() => onPressTab("Profile")}>
                     <FiUser />
-                </Link>
+                </span>
             </div>
         </StyledContainer>
     )
 }
 
-export default Tabs
+export default TabsPresenter

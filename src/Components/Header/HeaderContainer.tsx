@@ -4,7 +4,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux"
 
 const HeaderContainer: React.FC = () => {
     const viewLoginModal = useSelector(
-        (state: any) => state.modal.login,
+        (state: any) => state.base.login,
         shallowEqual
     )
     const dispatch = useDispatch()

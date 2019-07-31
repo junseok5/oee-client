@@ -1,3 +1,3 @@
-import Tabs from "./Tabs"
+import Tabs from "./TabsContainer"
 
 export default Tabs

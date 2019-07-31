@@ -107,9 +107,13 @@ interface IProps {
         type: string
         val: boolean
     }
+    getSocialInfo: (provider: string) => Promise<void>
 }
 
-const LoginModalPresenter: React.FC<IProps> = ({ setLoginModal }) => {
+const LoginModalPresenter: React.FC<IProps> = ({
+    setLoginModal,
+    getSocialInfo
+}) => {
     return (
         <StyledContainer>
             <div className="dark-box" onClick={setLoginModal} />
@@ -122,13 +126,19 @@ const LoginModalPresenter: React.FC<IProps> = ({ setLoginModal }) => {
                         </div>
                     </div>
                     <div className="login-content">
-                        <div className="social-login facebook">
+                        <div
+                            className="social-login facebook"
+                            onClick={() => getSocialInfo("facebook")}
+                        >
                             <div className="icon">
                                 <FaFacebookSquare />
                             </div>
                             <div className="title">Connect with facebook</div>
                         </div>
-                        <div className="social-login google">
+                        <div
+                            className="social-login google"
+                            onClick={() => getSocialInfo("google")}
+                        >
                             <div className="icon">
                                 <FaGoogle />
                             </div>

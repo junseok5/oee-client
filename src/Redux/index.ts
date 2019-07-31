@@ -1,10 +1,10 @@
 import { combineReducers } from "redux"
 import counter from "./Reducers/counter"
-import modal from "./Reducers/modal"
+import base from "./Reducers/base"
 
 const rootReducer = combineReducers({
     counter,
-    modal
+    base
 })
 
 export default rootReducer

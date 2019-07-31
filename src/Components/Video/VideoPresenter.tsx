@@ -12,6 +12,7 @@ import {
 const StyledContainer = styled.div`
     background: black;
     height: 100vh;
+    color: white;
 
     .header {
         width: 100%;
@@ -23,7 +24,6 @@ const StyledContainer = styled.div`
             top: 14px;
             left: 14px;
             font-size: 3em;
-            color: white;
             cursor: pointer;
 
             @media screen and (max-width: 768px) {
@@ -52,6 +52,17 @@ const StyledContainer = styled.div`
         }
     }
 
+    .subtitle {
+        padding-top: 1em;
+        padding-bottom: 1em;
+        text-align: center;
+        font-size: 1.8em;
+
+        @media screen and (max-width: 768px) {
+            font-size: 1.3em;
+        }
+    }
+
     .controller {
         position: absolute;
         left: 0;
@@ -61,7 +72,6 @@ const StyledContainer = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        color: white;
 
         .icon {
             position: relative;
@@ -72,8 +82,18 @@ const StyledContainer = styled.div`
             display: flex;
             align-items: center;
 
+            @media screen and (max-width: 768px) {
+                font-size: 1.5em;
+                margin-left: 0.8em;
+                margin-right: 0.8em;
+            }
+
             &.caption {
                 font-size: 1.8em;
+
+                @media screen and (max-width: 768px) {
+                    font-size: 1.5em;
+                }
             }
 
             .non-icon {
@@ -98,22 +118,24 @@ const VideoPresenter: React.FC = () => {
                 <div className="player" />
             </div>
 
-            <div className="subtitle" />
+            <div className="subtitle">
+                Hey Muthurfucker
+            </div>
             <div className="controller">
-                <div className="caption icon">
+                <div className="caption icon" title="Subtitle on/off">
                     <FaClosedCaptioning />
                     <div className="non-icon" />
                 </div>
-                <div className="prev icon">
+                <div className="prev icon" title="Prev section">
                     <FaStepBackward />
                 </div>
-                <div className="play icon">
+                <div className="play icon" title="Play/Pause">
                     <FaPlay />
                 </div>
-                <div className="next icon">
+                <div className="next icon" title="Next section">
                     <FaStepForward />
                 </div>
-                <div className="section-repeat icon">
+                <div className="section-repeat icon" title="Section repeat">
                     <FiRepeat />
                 </div>
             </div>
