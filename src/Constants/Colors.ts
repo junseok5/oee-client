@@ -8,5 +8,6 @@ export default {
     lightGray: "#8697aa",
     boldGray: "#495057",
     normalGray: "#747474",
-    border: "#eff0f3"
+    border: "#eff0f3",
+    error: "#E04848"
 }

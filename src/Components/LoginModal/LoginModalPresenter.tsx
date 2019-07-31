@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { FiX } from "react-icons/fi"
 import { FaFacebookSquare, FaGoogle } from "react-icons/fa"
 import Colors from "../../Constants/Colors"
+import Loading from "../Loading"
 
 const StyledContainer = styled.div`
     position: fixed;
@@ -98,59 +99,86 @@ const StyledContainer = styled.div`
                     cursor: pointer;
                 }
             }
+
+            .error-message {
+                padding-left: 1em;
+                padding-right: 1em;
+                text-align: right;
+                color: ${Colors.error};
+                font-size: 0.9em;
+                font-weight: bold;
+            }
         }
     }
 `
 
 interface IProps {
-    setLoginModal: () => {
+    setLoginModal: (
+        val: boolean
+    ) => {
         type: string
         val: boolean
     }
     getSocialInfo: (provider: string) => Promise<void>
+    loading: boolean
+    errorMessage: string
 }
 
 const LoginModalPresenter: React.FC<IProps> = ({
     setLoginModal,
-    getSocialInfo
+    getSocialInfo,
+    loading,
+    errorMessage
 }) => {
     return (
         <StyledContainer>
-            <div className="dark-box" onClick={setLoginModal} />
-            <div className="main">
-                <div className="login-box">
-                    <div className="login-header">
-                        <div className="title">Login</div>
-                        <div className="close" onClick={setLoginModal}>
-                            <FiX fontSize={"1.5em"} />
-                        </div>
-                    </div>
-                    <div className="login-content">
-                        <div
-                            className="social-login facebook"
-                            onClick={() => getSocialInfo("facebook")}
-                        >
-                            <div className="icon">
-                                <FaFacebookSquare />
+            <div className="dark-box" onClick={() => setLoginModal(false)} />
+            {loading ? (
+                <div className="main">
+                    <Loading color={"#fff"} />
+                </div>
+            ) : (
+                <div className="main">
+                    <div className="login-box">
+                        <div className="login-header">
+                            <div className="title">Login</div>
+                            <div
+                                className="close"
+                                onClick={() => setLoginModal(false)}
+                            >
+                                <FiX fontSize={"1.5em"} />
                             </div>
-                            <div className="title">Connect with facebook</div>
                         </div>
-                        <div
-                            className="social-login google"
-                            onClick={() => getSocialInfo("google")}
-                        >
-                            <div className="icon">
-                                <FaGoogle />
+                        <div className="login-content">
+                            <div
+                                className="social-login facebook"
+                                onClick={() => getSocialInfo("facebook")}
+                            >
+                                <div className="icon">
+                                    <FaFacebookSquare />
+                                </div>
+                                <div className="title">
+                                    Connect with facebook
+                                </div>
                             </div>
-                            <div className="title">Connect with google</div>
+                            <div
+                                className="social-login google"
+                                onClick={() => getSocialInfo("google")}
+                            >
+                                <div className="icon">
+                                    <FaGoogle />
+                                </div>
+                                <div className="title">Connect with google</div>
+                            </div>
                         </div>
-                    </div>
-                    <div className="login-bottom">
-                        <div className="terms">Terms of Service</div>
-                        <div className="privacy">Privacy Policy</div>
+                        <div className="error-message">{errorMessage}</div>
+                        <div className="login-bottom">
+                            <div className="terms">Terms of Service</div>
+                            <div className="privacy">Privacy Policy</div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            )}
         </StyledContainer>
     )
 }
