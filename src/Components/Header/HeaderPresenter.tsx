@@ -74,7 +74,19 @@ const StyledContainer = styled.div`
         justify-content: flex-end;
 
         @media screen and (max-width: 768px) {
-            padding-right: 1em;
+            display: none;
+        }
+
+        .thumbnail {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
         }
 
         .login-button {
@@ -92,13 +104,14 @@ const StyledContainer = styled.div`
 `
 
 interface IProps {
+    thumbnail: string
     setLoginModal: () => {
         type: string
         val: boolean
     }
 }
 
-const HeaderPresenter: React.FC<IProps> = ({ setLoginModal }) => {
+const HeaderPresenter: React.FC<IProps> = ({ thumbnail, setLoginModal }) => {
     return (
         <StyledContainer>
             <div className="logo">
@@ -117,9 +130,19 @@ const HeaderPresenter: React.FC<IProps> = ({ setLoginModal }) => {
                 </label>
             </div>
             <div className="login">
-                <div className="login-button" onClick={setLoginModal}>
-                    Login
-                </div>
+                {thumbnail ? (
+                    <div className="thumbnail">
+                        <img
+                            src={thumbnail}
+                            draggable={false}
+                            alt="thumbnail"
+                        />
+                    </div>
+                ) : (
+                    <div className="login-button" onClick={setLoginModal}>
+                        Login
+                    </div>
+                )}
             </div>
         </StyledContainer>
     )

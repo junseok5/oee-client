@@ -3,5 +3,11 @@ export const SOCIAL_LOGIN_QUERY = `mutation SocialLogin($provider: String!, $acc
         ok
         error
         token
+        user {
+            _id
+            email
+            displayName
+            thumbnail
+        }
     }
 }`

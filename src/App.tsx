@@ -4,7 +4,10 @@ import { Route, Switch } from "react-router"
 import loadable from "@loadable/component"
 
 const client = new GraphQLClient({
-    url: "http://localhost:4000/graphql"
+    url: "http://localhost:4000/graphql",
+    headers: {
+        "X-JWT": localStorage.token
+    }
 })
 
 const MainPage = loadable(() => import("./Pages/MainPage"))

@@ -4,8 +4,11 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import reqSocialInfo from "../../Utils/reqSocialInfo"
 import { useMutation } from "graphql-hooks"
 import { SOCIAL_LOGIN_QUERY } from "./LoginModalQueries"
+import { withRouter, RouteComponentProps } from "react-router"
 
-const LoginModalContainer: React.FC = () => {
+interface IProps extends RouteComponentProps {}
+
+const LoginModalContainer: React.FC<IProps> = ({ history }) => {
     const viewLoginModal = useSelector(
         (state: any) => state.base.login,
         shallowEqual
@@ -25,6 +28,10 @@ const LoginModalContainer: React.FC = () => {
         val => dispatch({ type: "SET_LOGGED", val }),
         [dispatch]
     )
+    const setProfile = useCallback(
+        val => dispatch({ type: "SET_PROFILE", val }),
+        [dispatch]
+    )
     const [socialLogin, { loading }] = useMutation(SOCIAL_LOGIN_QUERY)
 
     const getSocialInfo = useCallback(async (provider: string) => {
@@ -34,13 +41,15 @@ const LoginModalContainer: React.FC = () => {
             ({ data }) => {
                 if (data) {
                     const {
-                        SocialLogin: { ok, error, token }
+                        SocialLogin: { ok, error, token, user }
                     } = data
 
                     if (ok) {
                         localStorage.token = token
                         setLogged(true)
                         setLoginModal(false)
+                        setProfile(user)
+                        history.push(`/user/${user._id}`)
                     } else {
                         setErrorMessage(error)
                     }
@@ -63,4 +72,4 @@ const LoginModalContainer: React.FC = () => {
     ) : null
 }
 
-export default LoginModalContainer
+export default withRouter(LoginModalContainer)
