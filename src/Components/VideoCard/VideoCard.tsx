@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { TVideo } from "../../Types/types"
 
 const StyledContainer = styled.div`
     width: 280px;
@@ -16,6 +17,7 @@ const StyledContainer = styled.div`
     .thumbnail {
         position: relative;
         width: 100%;
+        cursor: pointer;
 
         img {
             width: 100%;
@@ -40,20 +42,32 @@ const StyledContainer = styled.div`
         @media screen and (max-width: 768px) {
             font-size: 1.2em;
         }
+
+        span {
+            cursor: pointer;
+        }
     }
 `
 
-const VideoCard: React.FC = () => {
+interface IProps {
+    video: TVideo
+}
+
+const VideoCard: React.FC<IProps> = ({ video }) => {
     return (
         <StyledContainer>
             <div className="thumbnail">
                 <img
-                    src={`https://img.youtube.com/vi/Hu0ky1rWXkY/mqdefault.jpg`}
+                    src={`https://img.youtube.com/vi/${
+                        video.youtubeId
+                    }/mqdefault.jpg`}
                     draggable={false}
                 />
-                <div className="overaytime">0:00</div>
+                <div className="overaytime">{video.overayTime}</div>
             </div>
-            <div className="title">title test title test</div>
+            <div className="title">
+                <span>{video.title}</span>
+            </div>
         </StyledContainer>
     )
 }

@@ -7,9 +7,17 @@ const HeaderContainer: React.FC = () => {
         (state: any) => state.base.login,
         shallowEqual
     )
+    const userId = useSelector((state: any) => {
+        const profile = state.user.profile
+        if (profile) {
+            return profile._id
+        } else {
+            return ""
+        }
+    })
     const thumbnail = useSelector((state: any) => {
         const profile = state.user.profile
-        if (state.user.profile) {
+        if (profile) {
             return profile.thumbnail
         } else {
             return null
@@ -22,7 +30,11 @@ const HeaderContainer: React.FC = () => {
     )
 
     return (
-        <HeaderPresenter thumbnail={thumbnail} setLoginModal={setLoginModal} />
+        <HeaderPresenter
+            userId={userId}
+            thumbnail={thumbnail}
+            setLoginModal={setLoginModal}
+        />
     )
 }
 

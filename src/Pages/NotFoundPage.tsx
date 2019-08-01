@@ -1,5 +1,5 @@
 import React from "react"
-import Error from "../Components/Error/Error"
+import Error from "../Components/Error"
 import PageLayout from "../Components/PageLayout"
 import SideMenu from "../Components/SideMenu"
 import MainLayout from "../Components/MainLayout"

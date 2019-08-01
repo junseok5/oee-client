@@ -1,0 +1,1 @@
+export const SET_PAGE_COUNT = "SET_PAGE_COUNT"

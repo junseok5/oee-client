@@ -13,7 +13,12 @@ interface IProps {
 const Loading: React.FC<IProps> = ({ color = "#ff2f6e" }) => {
     return (
         <StyledContainer>
-            <Loadingbar type={"spokes"} color={color} />
+            <Loadingbar
+                type={"spokes"}
+                color={color}
+                width={"60px"}
+                height={"60px"}
+            />
         </StyledContainer>
     )
 }

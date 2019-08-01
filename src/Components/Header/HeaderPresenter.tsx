@@ -82,6 +82,7 @@ const StyledContainer = styled.div`
             height: 45px;
             border-radius: 50%;
             overflow: hidden;
+            cursor: pointer;
 
             img {
                 width: 100%;
@@ -104,6 +105,7 @@ const StyledContainer = styled.div`
 `
 
 interface IProps {
+    userId: string
     thumbnail: string
     setLoginModal: () => {
         type: string
@@ -111,7 +113,11 @@ interface IProps {
     }
 }
 
-const HeaderPresenter: React.FC<IProps> = ({ thumbnail, setLoginModal }) => {
+const HeaderPresenter: React.FC<IProps> = ({
+    userId,
+    thumbnail,
+    setLoginModal
+}) => {
     return (
         <StyledContainer>
             <div className="logo">
@@ -131,13 +137,15 @@ const HeaderPresenter: React.FC<IProps> = ({ thumbnail, setLoginModal }) => {
             </div>
             <div className="login">
                 {thumbnail ? (
-                    <div className="thumbnail">
-                        <img
-                            src={thumbnail}
-                            draggable={false}
-                            alt="thumbnail"
-                        />
-                    </div>
+                    <Link to={`/user/${userId}`}>
+                        <div className="thumbnail">
+                            <img
+                                src={thumbnail}
+                                draggable={false}
+                                alt="thumbnail"
+                            />
+                        </div>
+                    </Link>
                 ) : (
                     <div className="login-button" onClick={setLoginModal}>
                         Login
