@@ -8,6 +8,8 @@ import {
     FaStepForward,
     FaClosedCaptioning
 } from "react-icons/fa"
+import Loading from "../Loading"
+import YouTube from "react-youtube"
 
 const StyledContainer = styled.div`
     background: black;
@@ -32,9 +34,9 @@ const StyledContainer = styled.div`
         }
 
         .player {
+            position: relative;
             width: calc(100% - 12em);
             height: 600px;
-            background: gray;
 
             @media screen and (max-width: 1550px) {
                 height: 500px;
@@ -48,6 +50,12 @@ const StyledContainer = styled.div`
                 width: 100%;
                 height: 230px;
                 margin-top: 4em;
+            }
+
+            iframe {
+                position: absolute;
+                width: 100%;
+                height: 100%;
             }
         }
     }
@@ -108,19 +116,53 @@ const StyledContainer = styled.div`
     }
 `
 
-const VideoPresenter: React.FC = () => {
+type Transcript = {
+    start: number
+    end: number
+    textContent: string
+}
+
+interface IProps {
+    loading: boolean
+    youtubeId: string
+    transcript: Transcript[]
+    goBack: () => void
+    onReady: (event: { target: any }) => void
+}
+
+const VideoPresenter: React.FC<IProps> = ({
+    loading,
+    youtubeId,
+    transcript,
+    goBack,
+    onReady
+}) => {
     return (
         <StyledContainer>
             <div className="header">
-                <div className="back">
+                <div className="back" onClick={goBack}>
                     <FiArrowLeft />
                 </div>
-                <div className="player" />
+                <div className="player">
+                    <YouTube
+                        videoId={youtubeId}
+                        opts={{
+                            playerVars: {
+                                autoplay: 0,
+                                disablekb: 1,
+                                controls: 0,
+                                modestbranding: 1,
+                                playsinline: 1,
+                                rel: 0,
+                                showinfo: 0
+                            }
+                        }}
+                        onReady={onReady}
+                    />
+                </div>
             </div>
 
-            <div className="subtitle">
-                Hey Muthurfucker
-            </div>
+            <div className="subtitle">{loading ? <Loading /> : ""}</div>
             <div className="controller">
                 <div className="caption icon" title="Subtitle on/off">
                     <FaClosedCaptioning />

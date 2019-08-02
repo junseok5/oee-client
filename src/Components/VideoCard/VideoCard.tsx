@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { TVideo } from "../../Types/types"
+import { Link } from "react-router-dom"
 
 const StyledContainer = styled.div`
     width: 280px;
@@ -57,16 +58,21 @@ const VideoCard: React.FC<IProps> = ({ video }) => {
     return (
         <StyledContainer>
             <div className="thumbnail">
-                <img
-                    src={`https://img.youtube.com/vi/${
-                        video.youtubeId
-                    }/mqdefault.jpg`}
-                    draggable={false}
-                />
+                <Link to={`/v/${video._id}`}>
+                    <img
+                        src={`https://img.youtube.com/vi/${
+                            video.youtubeId
+                        }/mqdefault.jpg`}
+                        draggable={false}
+                    />
+                </Link>
+
                 <div className="overaytime">{video.overayTime}</div>
             </div>
             <div className="title">
-                <span>{video.title}</span>
+                <Link to={`/v/${video._id}`}>
+                    <span>{video.title}</span>
+                </Link>
             </div>
         </StyledContainer>
     )
